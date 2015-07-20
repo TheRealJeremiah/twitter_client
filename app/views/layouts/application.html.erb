@@ -3,12 +3,17 @@
 <head>
   <title>TwitterClient</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% if current_user %>
+    <script>
+      window.currentUserUid = <%= current_user.uid %>
+    </script>
+  <% end %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <% if current_user %>
-    <h1><%= current_user.name %></h1>
+    <h1>Hello, <%= current_user.name %></h1>
   <% end %>
 
 <%= yield %>
